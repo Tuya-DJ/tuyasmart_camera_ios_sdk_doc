@@ -1,0 +1,745 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Camera Function · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="device_dp.html" />
+    
+    
+    <link rel="prev" href="initiate_sdk.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="rapid_integration.html">
+            
+                <a href="rapid_integration.html">
+            
+                    
+                    Rapid Integration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="manual_integration.html">
+            
+                <a href="manual_integration.html">
+            
+                    
+                    Manual Integration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="preparation_work.html">
+            
+                <a href="preparation_work.html">
+            
+                    
+                    Preparation Work
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="initiate_sdk.html">
+            
+                <a href="initiate_sdk.html">
+            
+                    
+                    Initiate SDK
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6" data-path="camera_function.html">
+            
+                <a href="camera_function.html">
+            
+                    
+                    Camera Function
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="device_dp.html">
+            
+                <a href="device_dp.html">
+            
+                    
+                    Functions Of Device
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="required_permission.html">
+            
+                <a href="required_permission.html">
+            
+                    
+                    Required Permission
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="qrcode_network_configuration.html">
+            
+                <a href="qrcode_network_configuration.html">
+            
+                    
+                    QRCode Network Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="version_record.html">
+            
+                <a href="version_record.html">
+            
+                    
+                    Change Log
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Camera Function</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="camera-function">Camera Function</h1>
+<h3 id="failed-call-back">Failed call back</h3>
+<p>The result of all camera&apos;s operation is called back through TuyaSmartCameraDelegate. if the operation failed, call back will happen through below methord.</p>
+<pre><code class="lang-objective-c">- (void)camera:(id&lt;TuyaSmartCameraType&gt;)camera didOccurredError:(TYCameraErrorCode)errCode;
+</code></pre>
+<p>Errcode means certain operation failed, the definition of errcode is below:</p>
+<pre><code class="lang-objective-c">typedef enum {
+TY_ERROR_NONE,                      // 0
+TY_ERROR_CONNECT_FAILED,            // 1    connect failed
+TY_ERROR_CONNECT_DISCONNECT,        // 2    connect did disconnected
+TY_ERROR_ENTER_PLAYBACK_FAILED,     // 3    connect playback channel failed
+TY_ERROR_START_PREVIEW_FAILED,      // 4    preview failed. if the connection is broken during hte preview process, it will alse call back this error.
+TY_ERROR_START_PLAYBACK_FAILED,     // 5    playback failed. if the connection is broken during the playback process, it will alse call back this error.
+TY_ERROR_PAUSE_PLAYBACK_FAILED,     // 6    pause playabck failed
+TY_ERROR_RESUME_PLAYBACK_FAILED,    // 7    resume playabck failed
+TY_ERROR_ENABLE_MUTE_FAILED,        // 8    mute failed.
+TY_ERROR_START_TALK_FAILED,         // 9    start talk to device failed
+TY_ERROR_SNAPSHOOT_FAILED,          // 10   get screenshot failed
+TY_ERROR_RECORD_FAILED,             // 11   record video failed
+TY_ERROR_ENABLE_HD_FAILED,          // 12   set definition state failed
+TY_ERROR_GET_HD_FAILED,             // 13   get definition state failed
+TY_ERROR_QUERY_RECORD_DAY_FAILED,   // 14   query video record date failed
+TY_ERROR_QUERY_TIMESLICE_FAILED,    // 15   query video record slice failed
+} TYCameraErrorCode;
+</code></pre>
+<h3 id="video-render-view">Video render view</h3>
+<ul>
+<li>Get the video render view</li>
+</ul>
+<pre><code class="lang-objective-c">- (void)viewDidLoad {
+CGFloat ScreenWidth = [UIScreen mainScreen].bounds.size.width;
+CGFloat ScreenHeight = [UIScreen mainScreen].bounds.size.height;
+CGFloat VideoWidth = ScreenWidth;
+CGFloat VideoHeight = VideoWidth * 9 / 16;
+
+UIView&lt;TuyaSmartVideoViewType&gt; *videoView = [self.camera videoView];
+videoView.frame = CGRectMake(0, 64, VideoWidth, VideoHeight);
+[self.view addSubview:videoView];
+}
+</code></pre>
+<ul>
+<li>Video frame zoom in, move and clear</li>
+</ul>
+<pre><code class="lang-objective-c">// Enlarge the video image by 1.2 rate
+[videoView tuya_setScaled:1.2];
+// Move the video image to the right by 10.0 pt points
+[videoView tuya_setOffset:CGPointMake(10.0, 0.0)];
+// Clear the image and reset the zoom factor and offset
+[videoView tuya_clear];
+</code></pre>
+<h3 id="connect-p2p-channel">Connect p2p channel</h3>
+<pre><code class="lang-objective-c">// connect
+- (void)viewDidLoad {
+    // other code...
+    [self.camera connect];
+}
+
+// callback for connected success
+- (void)cameraDidConnected:(id&lt;TuyaSmartCameraType&gt;)camera {
+    self.isConnected = YES;
+}
+
+// callback for connected faild or disconnected
+- (void)cameraDisconnected:(id&lt;TuyaSmartCameraType&gt;)camera {
+    self.isConnected = NO;
+    NSLog(@&quot;---disconnected&quot;);
+}
+</code></pre>
+<h3 id="connect-playback-channel">Connect playback channel</h3>
+<p>P2p connection need to build two channel, the original channel is used for give command and transmit preview audio and video data. if you want to have playback functionm, you should build another playback channel to transmit the audio and video data.</p>
+<pre><code class="lang-objective-c">- (void)cameraDidConnected:(id&lt;TuyaSmartCameraType&gt;)camera {
+    self.isConnected = YES;
+    // connect playback channel
+    [self.camera enterPlayback];
+}
+
+// callback for playback channel connected success
+- (void)cameraDidConnectPlaybackChannel:(id&lt;TuyaSmartCameraType&gt;)camera {
+    NSLog(@&quot;---didconnectedplayback&quot;);
+}
+</code></pre>
+<h3 id="play-mode">Play mode</h3>
+<p>Define playback or preview, when set the status of mute, need to put the parameter inside, to define which mode is mute.</p>
+<pre><code class="lang-objective-c">typedef NS_ENUM(NSUInteger, TuyaSmartCameraPlayMode) {
+    TuyaSmartCameraPlayModeNone,        // none
+    TuyaSmartCameraPlayModePreview,     // live video
+    TuyaSmartCameraPlayModePlayback     // playback
+};
+</code></pre>
+<h3 id="start-preview">Start preview</h3>
+<pre><code class="lang-objective-c">- (void)startPreview {
+    //  Determine if the video is being recorded, and if you are recording a video, stop recording. (whether the status in the recording is maintained by the developer himself)
+    if (self.isRecording) {
+        [self.camera stopRecord];
+    }
+    // Determine if you are previewing, if you are previewing, stop previewing. (whether the state in the preview is maintained by the developer itself)
+    if (self.isPlaybacking) {
+        [self.camera stopPlayback];
+}
+    // Determine if the p2p channel is connected. If it is not connected or the connection has been disconnected, connect the channel. (The state of whether the p2p channel is connected is maintained by the developer itself)
+    if (!self.isConnected) {
+        [self.camera connect];
+    }
+    // start preview
+    [self.camera startPreview];
+}
+
+// callback for start preview success
+- (void)cameraDidBeginPreview:(id&lt;TuyaSmartCameraType&gt;)camera {
+    // current play mode
+    self.playMode = TuyaSmartCameraPlayModePreview;
+    // status for preview
+    self.isPreviewing = YES;
+}
+</code></pre>
+<ul>
+<li>Attention, current camera status, such as:preview, record, playback, p2p channel, disconnected, is maintained by developer, sdk will not store the status information, sdk only responsible for give command and call back.</li>
+</ul>
+<h3 id="stop-preview">Stop preview</h3>
+<pre><code class="lang-objective-c">- (void)stopPreview {
+    // if in recording, stop recording
+    if (self.isRecording) {
+        [self.camera stopRecord];
+    }
+    // if in talking, stop talking
+    if (self.isTalking) {
+        [self.camera startTalk];
+    }
+    // stop preview, this operation will not fail
+    [self.camera stopPreview];
+    self.isPreviewing = NO;
+    self.playMode = TuyaSmartCameraPlayModeNone;
+}
+
+// callback for stop preview success
+- (void)cameraDidStopPreview:(id&lt;TuyaSmartCameraType&gt;)camera {
+    NSLog(@&quot;---stop preview&quot;);
+}
+</code></pre>
+<h3 id="get-the-date-which-have-playback-record">Get the date which have playback record</h3>
+<p>Before start playback, need to get the record the playback history, firstly get the date in which has the playback record.</p>
+<pre><code class="lang-objective-c">- (void)queryPlaybackDays {
+    // query the date of video recording in a month.
+    [self.camera queryRecordDaysWithYear:2018 month:7];
+}
+
+// call back for query success
+- (void)camera:(id&lt;TuyaSmartCameraType&gt;)camera didReceiveRecordDayQueryData:(NSArray&lt;NSNumber *&gt; *)days {
+    // days the array of days&#xFF0C;ex: [@(1), @(2), @(5), @(6), @(31)]; express in this month, 1&#xFF0C;2&#xFF0C;5&#xFF0C;6&#xFF0C;31  has video record.
+    self.playbackDays = days;
+    self.curentDay = days.lastObject.integerValue;
+}
+</code></pre>
+<h3 id="get-the-record-of-play-back-record">Get the record of play back record.</h3>
+<p>Gfter getting effective date of play back record, get the playback record according to the date.</p>
+<pre><code class="lang-objective-c">- (void)queryPlaybackRecords {
+    // query all video record slices for a particular day.
+    [self.camera queryRecordTimeSliceWithYear:2018 month:7 day:self.curentDay];
+}
+
+// callback for query success
+- (void)camera:(id&lt;TuyaSmartCameraType&gt;)camera didReceiveTimeSliceQueryData:(NSArray&lt;NSDictionary *&gt; *)timeSlices {
+    /*
+    timeSlices the array of playback video record information. the element is a NSDictionary, content like this:
+    kTuyaSmartPlaybackPeriodStartDate  &#xFF1A; startTime(NSDate)
+    kTuyaSmartPlaybackPeriodStopDate   &#xFF1A; stopTime(NSDate)
+    kTuyaSmartPlaybackPeriodStartTime  &#xFF1A; startTime(NSNumer, unix timestamp)
+    kTuyaSmartPlaybackPeriodStopTime   &#xFF1A; stopTime(NSNumer, unix timestamp)
+    */
+    self.timeSlices = timeSlices;
+}
+</code></pre>
+<h3 id="start-play-back">Start play back</h3>
+<pre><code class="lang-objective-c">- (void)startPlayBack:(NSDictionary)timeSlice {
+    // If in previewing, stop previewing. This includes stopping recording, intercoming, etc. See the stop preview method above for details.
+    if (self.isPreviewing) {
+        [self stopPreview];
+    }
+    // timeSlice: Taken from an element in the video clip playback information array above
+    NSInteger startTime = [[timeSlice objectForKey:kTuyaSmartTimeSliceStartTime] integerValue];
+    NSInteger stopTime = [[timeSlice objectForKey:kTuyaSmartTimeSliceStopTime] integerValue];
+    // Start playback of the video clip, pass in the timestamp of the start of playback, start timestamp of the video clip, end timestamp
+    // The timestamp to start playing needs to be between the start time and the end time of the video clip, where the default starts from the start time.
+    [self.camera startPlayback:startTime startTime:startTime stopTime:stopTime];
+}
+
+// callback for start playback success
+- (void)cameraDidBeginPlayback:(id&lt;TuyaSmartCameraType&gt;)camera {
+    self.playMode = TuyaSmartCameraPlayModePlayback;
+    self.isPlaybacking = YES;
+}
+</code></pre>
+<h3 id="pause-play-back">Pause play back</h3>
+<pre><code class="lang-objective-c">- (void)pausePlayback {
+    // if in recording, stop recording
+    if (self.isRecording) {
+        [self.camera stopRecord];
+    }
+    // pause playback
+    [self.camera pausePlayback];
+}
+
+// callback for pause playback
+- (void)cameraDidPausePlayback:(id&lt;TuyaSmartCameraType&gt;)camera {
+    NSLog(@&quot;---pause playback&quot;);
+}
+</code></pre>
+<h3 id="resume-play-back">Resume play back</h3>
+<pre><code class="lang-objective-c">- (void)resumePlayback {
+    // resume playback
+    [self.camera resumePlayback];
+}
+
+// callback for resume playback success
+- (void)cameraDidResumePlayback:(id&lt;TuyaSmartCameraType&gt;)camera {
+    NSLog(@&quot;---resume playback&quot;);
+}
+</code></pre>
+<h3 id="stop-play-back">Stop play back</h3>
+<pre><code class="lang-objective-c">- (void)stopPlayback {
+    // if in recording, stop recording
+    if (self.isRecording) {
+        [self.camera stopRecord];
+    }
+    // stop playback
+    [self.camera stopPlayback];
+}
+
+// callback for stop playback success
+- (void)cameraDidStopPlayback:(id&lt;TuyaSmartCameraType&gt;)camera {
+    self.playMode = TuyaSmartCameraPlayModeNone;
+    self.isPlaybacking = NO;
+}
+</code></pre>
+<h3 id="playback-finish-call-back">Playback finish call back</h3>
+<pre><code class="lang-objective-c">// This callback is triggered when the video clip playback ends. Some devices automatically play the next video clip of the day, and the callback will not be triggered until all video clips of the day have finished playing. When to trigger, depends on the implementation of the device firmware.
+- (void)cameraPlaybackDidFinished:(id&lt;TuyaSmartCameraType&gt;)camera {
+    self.playMode = TuyaSmartCameraPlayModeNone;
+    self.isPlaybacking = NO;
+}
+</code></pre>
+<h3 id="get-the-first-frame-call-back">Get the first frame call back</h3>
+<pre><code class="lang-objective-c">// This callback is triggered when the video frame is received for the first time after preview or playback begins. This indicates that the video has started playing normally.
+- (void)cameraDidReceiveFirstFrame:(id&lt;TuyaSmartCameraType&gt;)camera {
+    NSLog(@&quot;---receive first frame&quot;);
+}
+</code></pre>
+<h3 id="start-video-recording">Start video recording</h3>
+<pre><code class="lang-objective-c">- (void)startRecord {
+    // If no video is playing, or it is already in recording, do nothing.
+    if (self.playMode == TuyaSmartCameraPlayModeNone || self.isRecording) {
+        return;
+    }
+
+    // if in talking, stop talking
+    if (self.isTalking) {
+        [self.camera startTalk];
+    }
+
+    // start recording
+    [self.camera startRecord];
+}
+
+// callback for start record success
+- (void)cameraDidStartRecord:(id&lt;TuyaSmartCameraType&gt;)camera {
+    self.isRecording = YES;
+}
+</code></pre>
+<h3 id="stop-video-recording">Stop video recording</h3>
+<pre><code class="lang-objective-c">- (void)stopRecord {
+    // if in recording, stop recording
+    if (self.isRecording) {
+        [self.camera stopRecord];
+    }
+}
+
+// callback for stop record success
+- (void)cameraDidStopRecord:(id&lt;TuyaSmartCameraType&gt;)camera {
+    self.isRecording = NO;
+}
+</code></pre>
+<ul>
+<li>if video recorded successfully, the video will be stored in the phone photo album. the photo album name is same as App name.</li>
+</ul>
+<h3 id="video-screenshot">Video screenshot</h3>
+<pre><code class="lang-objective-c">- (void)snapShoot {
+    // If no video is played, no action is taken
+    if (self.playMode == TuyaSmartCameraPlayModeNone) {
+        return;
+    }
+    // snapshoot
+    [self.camera snapShoot];
+}
+
+// callback for snapshoot success
+- (void)camearaSnapShootSuccess:(id&lt;TuyaSmartCameraType&gt;)camera {
+    NSLog(@&quot;---snap shoot success&quot;);
+}
+</code></pre>
+<ul>
+<li>if screen shot successfully, the picture will be stored in the phone photo album.</li>
+</ul>
+<h3 id="mute">Mute</h3>
+<pre><code class="lang-objective-c">- (void)enabelMute:(BOOL)isMuted {
+    // If no video is played, no action is taken
+    if (self.playMode == TuyaSmartCameraPlayModeNone) {
+        return;
+    }
+    // isMuted: YES-close sound of video&#xFF1B;NO-open sound of video
+    // default is YES
+    [self.camera enableMute:isMuted forPlayMode:self.playMode];
+}
+
+// callback for mute state did changed
+- (void)camera:(id&lt;TuyaSmartCameraType&gt;)camera didReceiveMuteState:(BOOL)isMute playMode:(TuyaSmartCameraPlayMode)playMode {
+    self.isMuted = isMute;
+}
+</code></pre>
+<h3 id="definition-information-access-and-change">Definition information access and change</h3>
+<pre><code class="lang-objective-c">// start preview did success
+- (void)cameraDidBeginPreview:(id&lt;TuyaSmartCameraType&gt;)camera {
+    // other code ...
+    // access definition
+    [self.camera getHD];
+
+    // change definition
+    // [self.camera enableHD:YES];
+}
+
+// callback for definition state did changed
+- (void)camera:(id&lt;TuyaSmartCameraType&gt;)camera didReceiveDefinitionStatus:(BOOL)isHd {
+    // isHd: is high definiton&#xFF1B;YES-HD&#xFF1B;NO-SD
+    self.isHd = isHd;
+}
+</code></pre>
+<h3 id="start-talking">Start talking</h3>
+<pre><code class="lang-objective-c">- (void)startTalk {
+    // if in recording, stop recording
+    if (self.isRecording) {
+        [self.camera stopRecord];
+    }
+
+    // start talk to device
+    [self.camera startTalk];
+}
+
+// call back for start talk success
+- (void)cameraDidBeginTalk:(id&lt;TuyaSmartCameraType&gt;)camera {
+    self.isTalking = YES;
+}
+</code></pre>
+<h3 id="stop-talking">Stop talking</h3>
+<pre><code class="lang-objective-c">- (void)stopTalk {
+    // if in talking, stop talking
+    if (self.isTalking) {
+        [self.camera stopTalk];
+    }
+}
+
+// callback for stop talking success
+- (void)cameraDidStopTalk:(id&lt;TuyaSmartCameraType&gt;)camera {
+    self.isTalking = NO;
+}
+</code></pre>
+<ul>
+<li>Talking and recording are mutually exclusive, and talking can be turned on only when previewing.</li>
+</ul>
+<h3 id="callback-for--resolution-did-changed">Callback for  resolution did changed</h3>
+<pre><code class="lang-objective-c">// call back for video resolution did changed
+- (void)camera:(id&lt;TuyaSmartCameraType&gt;)camera resolutionDidChangeWidth:(NSInteger)width height:(NSInteger)height {
+    NSLog(@&quot;---resolution changed: %ld x %ld&quot;, width, height);
+}
+</code></pre>
+<h3 id="turn-on-the-bare-stream">Turn on the bare stream.</h3>
+<p>If you need to get the original video frame data, you can enable  attribute.</p>
+<pre><code class="lang-objective-c">- (void)viewDidLoad {
+    // other init code
+    // if camera.isRecvFrame is YES&#xFF0C;the video will not be automatically rendered and the video frame data will be given by the proxy method below.
+    self.camera.isRecvFrame = YES;
+}
+
+/**
+if &apos;isRecvFrame&apos; is true, the video data will not decode in the SDK, and could get the orginal video frame data through this method.
+@param camera      camera
+@param frameData   original video frame data
+@param size        video frame data size
+@param frameInfo   frame header info
+*/
+- (void)camera:(id&lt;TuyaSmartCameraType&gt;)camera ty_didReceiveFrameData:(const char *)frameData dataSize:(unsigned int)size frameInfo:(TuyaSmartVideoFrameInfo)frameInfo;
+</code></pre>
+<ul>
+<li>After the raw stream is opened, the original rendered view (videoVIew) will not render the image, and the developer needs to parse and render the data through the interface.</li>
+</ul>
+<h3 id="destory-resource">Destory resource</h3>
+<pre><code class="lang-objective-c">// when the view controller dealloc, destory the camera
+- (void)dealloc {
+    [self.camera destory];
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="initiate_sdk.html" class="navigation navigation-prev " aria-label="Previous page: Initiate SDK">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="device_dp.html" class="navigation navigation-next " aria-label="Next page: Functions Of Device">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Camera Function","level":"1.6","depth":1,"next":{"title":"Functions Of Device","level":"1.7","depth":1,"path":"resource/device_dp.md","ref":"resource/device_dp.md","articles":[]},"previous":{"title":"Initiate SDK","level":"1.5","depth":1,"path":"resource/initiate_sdk.md","ref":"resource/initiate_sdk.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"resource/camera_function.md","mtime":"2019-01-24T09:55:31.663Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-24T09:56:20.540Z"},"basePath":"..","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
